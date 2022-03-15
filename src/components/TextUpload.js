@@ -14,7 +14,8 @@ export const TextUpload = ({ setUrl }) => {
         e.preventDefault()
 
         try {
-            const added = await ipfs.add(text)
+            const ipfsOptions = {cidVersion: 1, rawLeaves: true};
+            const added = await ipfs.add(text, ipfsOptions)
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
             setTextUrl(url)
             setUrl(url)

@@ -31,7 +31,8 @@ export const ImageUpload = ({ setUrl }) => {
         e.preventDefault()
 
         try {
-            const added = await ipfs.add(image)
+            const ipfsOptions = {cidVersion: 1, rawLeaves: true};
+            const added = await ipfs.add(image, ipfsOptions)
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
             setUrl(url)
             setImagePreview(url)

@@ -26,7 +26,7 @@ export const FolderUpload = ({ setUrl }) => {
         })
 
         const results = await all(
-            ipfs.addAll(fileObjectsArray, { wrapWithDirectory: true })
+            ipfs.addAll(fileObjectsArray, { cidVersion: 1, rawLeaves: true, wrapWithDirectory: true })
         )
 
         console.log(results)

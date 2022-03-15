@@ -24,7 +24,8 @@ export const PdfUpload = ({ setUrl }) => {
         e.preventDefault()
 
         try {
-            const added = await ipfs.add(pdf)
+            const ipfsOptions = {cidVersion: 1, rawLeaves: true};           
+            const added = await ipfs.add(pdf, ipfsOptions)
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
             setPdfPreview(url)
             setUrl(url)

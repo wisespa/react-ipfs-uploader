@@ -14,7 +14,8 @@ export const FileUpload = ({ setUrl }) => {
         e.preventDefault()
 
         try {
-            const added = await ipfs.add(file)
+            const ipfsOptions = {cidVersion: 1, rawLeaves: true};
+            const added = await ipfs.add(file, ipfsOptions)
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
             setUrl(url)
             setFileUrl(url)
